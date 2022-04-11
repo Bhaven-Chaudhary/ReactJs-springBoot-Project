@@ -2,6 +2,7 @@ package com.restapi.coursesapp.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.restapi.coursesapp.entities.Course;
 
@@ -36,6 +37,37 @@ public class CourseServicesImpl implements CourseServices {
     public boolean addCourse(Course course) {
         boolean added = list.add(course);
         return added;
+    }
+
+    @Override
+    public boolean update(Course course) {
+
+        try {
+            list = list.stream().map(obj -> {
+                if (obj.getId() == course.getId())
+                    obj = course;
+
+                return obj;
+            }).collect(Collectors.toList());
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean delete(int courseId) {
+
+        try {
+            list = list.stream().filter(course -> course.getId() != courseId).collect(Collectors.toList());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

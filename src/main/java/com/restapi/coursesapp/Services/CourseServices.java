@@ -12,4 +12,8 @@ public interface CourseServices {
 
     public boolean addCourse(Course course);
 
+    public boolean update(Course course);
+
+    public boolean delete(int courseId);
+
 }

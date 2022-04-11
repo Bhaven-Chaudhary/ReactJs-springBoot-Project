@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.restapi.coursesapp.entities.Course;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CourseServicesImpl implements CourseServices {
 
     List<Course> list;
@@ -21,9 +21,21 @@ public class CourseServicesImpl implements CourseServices {
     }
 
     @Override
-    public List<Course> getCourses() {
+    public List<Course> getAllCourses() {
 
         return list;
+    }
+
+    @Override
+    public Course getCourse(int courseId) {
+
+        return list.stream().filter(course -> course.getId() == courseId).findFirst().get();
+    }
+
+    @Override
+    public boolean addCourse(Course course) {
+        boolean added = list.add(course);
+        return added;
     }
 
 }

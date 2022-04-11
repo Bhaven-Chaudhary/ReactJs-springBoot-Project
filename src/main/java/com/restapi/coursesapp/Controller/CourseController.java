@@ -7,6 +7,9 @@ import com.restapi.coursesapp.entities.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,10 +23,25 @@ public class CourseController {
         return "this is home page";
     }
 
-    @GetMapping("/getCourses")
+    // Get all courses
+    @GetMapping("/Courses")
     public List<Course> getAllCourses() {
 
-        return courseService.getCourses();
+        return courseService.getAllCourses();
+    }
+
+    // Get single course by id
+    @GetMapping("Courses/{courseId}")
+    public Course getCourse(@PathVariable int courseId) {
+
+        return courseService.getCourse(courseId);
+    }
+
+    @PostMapping("/Courses")
+    public String addCourse(@RequestBody Course course) {
+
+        boolean added = courseService.addCourse(course);
+        return (added ? "Course added sucessfully" : "Something went wrong");
     }
 
 }

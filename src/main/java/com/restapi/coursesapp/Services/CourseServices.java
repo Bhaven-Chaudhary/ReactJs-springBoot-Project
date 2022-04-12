@@ -2,18 +2,18 @@ package com.restapi.coursesapp.Services;
 
 import java.util.List;
 
-import com.restapi.coursesapp.entities.Course;
+import com.restapi.coursesapp.Entities.Course;
 
 public interface CourseServices {
 
     public List<Course> getAllCourses();
 
-    public Course getCourse(int courseId);
+    public Course getCourse(long courseId);
 
-    public boolean addCourse(Course course);
+    public Course addCourse(Course course);
 
-    public boolean update(Course course);
+    public void update(Course course);
 
-    public boolean delete(int courseId);
+    public void delete(long courseId);
 
 }

@@ -1,73 +1,59 @@
 package com.restapi.coursesapp.Services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.restapi.coursesapp.entities.Course;
+import com.restapi.coursesapp.Dao.CourseDao;
+import com.restapi.coursesapp.Entities.Course;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CourseServicesImpl implements CourseServices {
 
-    List<Course> list;
-
-    public CourseServicesImpl() {
-
-        list = new ArrayList<>();
-        list.add(new Course(01, "Java", "This is Java Course"));
-        list.add(new Course(02, "Python", "This is Python Course"));
-
-    }
+    @Autowired
+    private CourseDao courseDao;
 
     @Override
     public List<Course> getAllCourses() {
 
-        return list;
+        return courseDao.findAll();
     }
 
     @Override
-    public Course getCourse(int courseId) {
+    public Course getCourse(long courseId) {
 
-        return list.stream().filter(course -> course.getId() == courseId).findFirst().get();
+        // return list.stream().filter(course -> course.getId() ==
+        // courseId).findFirst().get();
+
+        return courseDao.findById(courseId).get();
     }
 
     @Override
-    public boolean addCourse(Course course) {
-        boolean added = list.add(course);
-        return added;
+    public Course addCourse(Course course) {
+        Course savedCourse = courseDao.save(course);
+        return savedCourse;
     }
 
     @Override
-    public boolean update(Course course) {
+    public void update(Course course) {
 
-        try {
-            list = list.stream().map(obj -> {
-                if (obj.getId() == course.getId())
-                    obj = course;
+        // list = list.stream().map(obj -> {
+        // if (obj.getId() == course.getId())
+        // obj = course;
 
-                return obj;
-            }).collect(Collectors.toList());
-            return true;
+        // return obj;
+        // }).collect(Collectors.toList());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
+        courseDao.save(course);
     }
 
     @Override
-    public boolean delete(int courseId) {
-
-        try {
-            list = list.stream().filter(course -> course.getId() != courseId).collect(Collectors.toList());
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public void delete(long courseId) {
+        // list = list.stream().filter(course -> course.getId() !=
+        // courseId).collect(Collectors.toList());
+        Course course = courseDao.getById(courseId);
+        courseDao.delete(course);
     }
 
 }

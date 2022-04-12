@@ -2,8 +2,8 @@ package com.restapi.coursesapp.Controller;
 
 import java.util.List;
 
+import com.restapi.coursesapp.Entities.Course;
 import com.restapi.coursesapp.Services.CourseServices;
-import com.restapi.coursesapp.entities.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,38 +35,47 @@ public class CourseController {
     }
 
     // Get single course by id
-    @GetMapping("Courses/{courseId}")
-    public Course getCourse(@PathVariable int courseId) {
+    @GetMapping("/Courses/{courseId}")
+    public ResponseEntity<Course> getCourse(@PathVariable String courseId) {
+        Course course = null;
+        try {
+            course = courseService.getCourse(Integer.parseInt(courseId));
+            return ResponseEntity.status(HttpStatus.CREATED).body(course);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-        return courseService.getCourse(courseId);
     }
 
     @PostMapping("/Courses")
-    public String addCourse(@RequestBody Course course) {
+    public Course addCourse(@RequestBody Course course) {
 
-        boolean added = courseService.addCourse(course);
-        return (added ? "Course added sucessfully" : "Something went wrong");
+        Course addedCourse = courseService.addCourse(course);
+        return addedCourse;
     }
 
-    @PutMapping("/Courses}")
+    @PutMapping("/Courses")
     public ResponseEntity<String> update(@RequestBody Course course) {
-
-        boolean update = courseService.update(course);
-
-        if (update) {
+        try {
+            courseService.update(course);
             return ResponseEntity.ok("Updated sucessfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+
     }
 
-    @DeleteMapping("Courses/{courseId}")
-    public ResponseEntity<String> delete(@PathVariable int courseId) {
+    @DeleteMapping("/Courses/{courseId}")
+    public ResponseEntity<String> delete(@PathVariable String courseId) {
 
-        boolean deleted = courseService.delete(courseId);
-        if (deleted) {
+        try {
+
+            courseService.delete(Integer.parseInt(courseId));
             return ResponseEntity.status(HttpStatus.ACCEPTED).body("Deletion sucessfull");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
     }
 

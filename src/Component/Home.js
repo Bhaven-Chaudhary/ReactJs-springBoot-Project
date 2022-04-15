@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from "./Home.module.css"
+import Button from './UI/Button'
 
 export default function Home() {
     return (
@@ -7,7 +8,7 @@ export default function Home() {
 
             <h1 className={classes.heading}>Course App</h1>
             <p className={classes.description}>This course app is used to save the courses and their details, it is created using React Js and Spring Boot</p>
-            <button className={classes.buttonStyle}>Get Started</button>
+            <Button buttonName="Get Started" />
         </div>
     )
 }

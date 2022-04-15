@@ -1,0 +1,27 @@
+.container{
+    background-color: #623770;
+    text-align: center;
+    padding: 50px;
+    color: white;
+}
+.heading{
+   
+    font-size: 85px;
+    font-family: 'Inconsolata', monospace;
+
+}
+
+.discription{
+    font-size: 19px;
+       
+}
+.buttonStyle{
+    font-size: 19px;
+    padding: 13px;
+    border-radius: 7px;
+    font-style: inherit ;
+    background-color: #e30b0b;
+    color: white;
+    border-style: none;
+    margin: 14px;
+}

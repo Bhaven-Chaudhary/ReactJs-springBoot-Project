@@ -6,12 +6,12 @@
 }
 .heading{
    
-    font-size: 85px;
+    font-size: 84px;
     font-family: 'Inconsolata', monospace;
-
+    margin: 39px;
 }
 
 .discription{
     font-size: 19px;
-       
+    margin: 22px;
 }

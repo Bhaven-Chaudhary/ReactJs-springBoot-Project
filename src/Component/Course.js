@@ -2,12 +2,12 @@ import React from 'react'
 import classes from "./Course.module.css"
 import Button from './UI/Button'
 
-export default function Course() {
+export default function Course(props) {
     return (
         <div className={classes.container}>
             <div>
-                <p className={classes.title}>Java</p>
-                <p className={classes.description}>This is Java Description</p>
+                <p className={classes.title}>{props.item.tittle}</p>
+                <p className={classes.description}>{props.item.description}</p>
             </div>
             <div>
                 <Button style={{

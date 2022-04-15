@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './AllCourses.module.css'
 import { useState } from "react";
+import Course from "./Course";
 
 export default function AllCourses() {
 
@@ -15,7 +16,16 @@ export default function AllCourses() {
 
     return (
 
-        <div></div>
+        <div className={classes.container}>
+            <h1>All courses</h1>
+
+            {
+                courseList.length > 0 ? courseList.map(item =>
+                    <Course item={item} />
+                ) : "NO Courses to display"
+            }
+
+        </div>
 
     )
 

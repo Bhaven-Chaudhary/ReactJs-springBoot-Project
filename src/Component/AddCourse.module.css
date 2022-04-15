@@ -3,7 +3,7 @@
    color: white;
    text-align: center;
    height: 100vh;
-   
+      
 }
 
 .h1{
@@ -14,18 +14,19 @@
 .form{
     background-color: #423e56;
     width: 37%;
-    height: 55vh;
+    height: 61vh;
     margin: auto;
     margin-top: 29px;
     border-radius: 18px;
     padding: 55px;
     text-align: center;
     
+    
 }
 
 .inputContainer{
     
-    padding: 40px 0px;
+    padding: 26px 0px;
     display: flex;
 }
 
@@ -34,15 +35,26 @@
     width: 169px;
     text-align: left;
     font-size: 22px;
-    padding-top: 4px;
+    
 }
 .inputField{
     border: none;
     border-radius: 3px;
-    height: 40px;
     width: -webkit-fill-available;
     font-size: 16px;
-    padding: 0px 10px;
+    padding: 10px 10px;
 }
 
 
+.buttonStyle{
+    font-size: 19px;
+    padding: 11px 23px;
+    border-radius: 7px;
+    font-family: 'Inconsolata', monospace;
+    background-color: #e30b0b;
+    color: white;
+    border-style: none;
+    margin: 14px;
+    width: fit-content;
+    text-decoration: none;
+}

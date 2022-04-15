@@ -2,9 +2,10 @@
     font-size: 19px;
     padding: 11px 23px;
     border-radius: 7px;
-    font-style: inherit ;
+    font-family: 'Inconsolata', monospace;
     background-color: #e30b0b;
     color: white;
     border-style: none;
     margin: 14px;
+    width: fit-content;
 }

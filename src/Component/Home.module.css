@@ -1,8 +1,10 @@
 .container{
     background-color: #623770;
-    text-align: center;
-    padding: 50px;
+    align-items: center;
+    padding: 22px;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 .heading{
    
@@ -14,4 +16,17 @@
 .discription{
     font-size: 19px;
     margin: 22px;
+}
+
+.buttonStyle{
+    font-size: 19px;
+    padding: 11px 23px;
+    border-radius: 7px;
+    font-style: inherit ;
+    background-color: #e30b0b;
+    color: white;
+    border-style: none;
+    margin: 14px;
+    width: fit-content;
+    text-decoration: none;
 }

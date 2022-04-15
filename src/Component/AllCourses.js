@@ -17,7 +17,7 @@ export default function AllCourses() {
     return (
 
         <div className={classes.container}>
-            <h1>All courses</h1>
+            <h1 style={{ padding: "9px" }}>All Courses</h1>
 
             {
                 courseList.length > 0 ? courseList.map(item =>

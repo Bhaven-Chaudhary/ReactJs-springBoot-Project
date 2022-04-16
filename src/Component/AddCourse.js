@@ -21,7 +21,7 @@ export default function () {
                 </div>
 
                 <Button buttonName="Submit" />
-                <Link to={"/"} className={classes.buttonStyle}>Add Course</Link>
+                <Link to={"/"} className={classes.buttonStyle}>Back</Link>
 
             </form>
         </div>

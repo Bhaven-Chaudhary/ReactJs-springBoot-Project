@@ -4,3 +4,8 @@
     color: white;
     padding: 11px;
 }
+
+.courseContainer{
+    display: flex;
+    justify-content: center;
+}

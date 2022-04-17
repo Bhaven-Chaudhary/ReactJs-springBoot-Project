@@ -1,15 +1,14 @@
 import './App.css';
 import Home from './Component/Home';
-import { ToastContainer, toast } from 'react-toastify';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import AllCourses from './Component/AllCourses';
-import AddCourse from './Component/AddCourse';
+import AddCourse from './Component/Forms/AddCourse';
+
 
 function App() {
   return (
@@ -20,9 +19,10 @@ function App() {
           <Route path='/' element={<><Home /> <AllCourses /></>} />
 
           <Route path='/addCourse' element={<AddCourse />} />
-        </Routes>
-      </Router>
 
+        </Routes>
+
+      </Router>
 
 
 

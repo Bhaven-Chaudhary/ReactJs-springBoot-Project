@@ -1,13 +1,9 @@
 import React from 'react'
 import classes from "./Home.module.css"
-import Button from './UI/Button'
 import { Link } from 'react-router-dom'
 
 export default function Home() {
 
-    const test = () => {
-        console.log("hello there Link")
-    }
 
     return (
         <div className={classes.container}>

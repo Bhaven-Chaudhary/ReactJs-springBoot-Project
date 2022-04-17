@@ -44,8 +44,10 @@ public class CourseServicesImpl implements CourseServices {
 
         // return obj;
         // }).collect(Collectors.toList());
-
-        courseDao.save(course);
+        Course courseToSave = new Course();
+        courseToSave.setName(course.getName());
+        courseToSave.setDescription(course.getDescription());
+        courseDao.save(courseToSave);
     }
 
     @Override

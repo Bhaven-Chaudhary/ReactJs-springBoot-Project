@@ -8,6 +8,7 @@ import com.restapi.coursesapp.Services.CourseServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class CourseController {
 
     @Autowired
@@ -49,17 +51,28 @@ public class CourseController {
     }
 
     @PostMapping("/Courses")
-    public Course addCourse(@RequestBody Course course) {
+    public ResponseEntity<String> addCourse(@RequestBody Course course) {
+        System.out.println(course);
+        if (course.getName().length() > 0 && course.getDescription().length() > 0) {
+            courseService.addCourse(course);
+            return ResponseEntity.ok("Course Added Sucessfully");
+        }
 
-        Course addedCourse = courseService.addCourse(course);
-        return addedCourse;
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+
     }
 
     @PutMapping("/Courses")
     public ResponseEntity<String> update(@RequestBody Course course) {
         try {
-            courseService.update(course);
-            return ResponseEntity.ok("Updated sucessfully");
+
+            if (course.getName() != null && course.getDescription() != null) {
+                courseService.update(course);
+                return ResponseEntity.ok("Updated sucessfully");
+            }
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
         }

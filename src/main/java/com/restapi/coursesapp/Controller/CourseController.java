@@ -65,13 +65,10 @@ public class CourseController {
     @PutMapping("/Courses")
     public ResponseEntity<String> update(@RequestBody Course course) {
         try {
-
-            if (course.getName() != null && course.getDescription() != null) {
-                courseService.update(course);
-                return ResponseEntity.ok("Updated sucessfully");
-            }
-
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+            System.out.println("Post Method");
+            System.out.println(course);
+            courseService.update(course);
+            return ResponseEntity.ok("Updated sucessfully");
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");

@@ -38,16 +38,8 @@ public class CourseServicesImpl implements CourseServices {
     @Override
     public void update(Course course) {
 
-        // list = list.stream().map(obj -> {
-        // if (obj.getId() == course.getId())
-        // obj = course;
+        courseDao.save(course);
 
-        // return obj;
-        // }).collect(Collectors.toList());
-        Course courseToSave = new Course();
-        courseToSave.setName(course.getName());
-        courseToSave.setDescription(course.getDescription());
-        courseDao.save(courseToSave);
     }
 
     @Override

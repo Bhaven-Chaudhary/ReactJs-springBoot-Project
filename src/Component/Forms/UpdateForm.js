@@ -32,7 +32,7 @@ export default function UpdateForm(props) {
             console.log(error);
             toast("Something went wrong", { position: "top-center" });
         })
-
+        props.refresh();
         props.setShowForm(false);
 
     }

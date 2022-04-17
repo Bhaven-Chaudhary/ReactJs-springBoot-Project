@@ -6,7 +6,7 @@ import baseUrl from "./Api/Path"
 import axios from "axios";
 import UpdateForm from "./Forms/UpdateForm";
 
-export default function AllCourses() {
+export default function AllCourses(props) {
 
     const [courseList, setCourseList] = useState()
 
@@ -32,7 +32,7 @@ export default function AllCourses() {
             <div className={classes.courseContainer}>
                 {
                     courseList ? courseList.map(item =>
-                        <Course key={item.id} item={item} />
+                        <Course key={item.id} item={item} refresh={props.refresh} />
                     ) : "NO Courses to display"
                 }
             </div>

@@ -22,6 +22,8 @@ export default function Course(props) {
             toast("Something went wrong", { position: "top-center" });
         })
 
+        props.refresh();
+
 
     }
 
@@ -53,7 +55,7 @@ export default function Course(props) {
 
             </div>
         </ div >}
-        {showForm && <UpdateForm setShowForm={setShowForm} item={props.item} />}
+        {showForm && <UpdateForm setShowForm={setShowForm} item={props.item} refresh={props.refresh} />}
 
     </>
     )

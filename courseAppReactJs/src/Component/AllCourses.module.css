@@ -1,0 +1,11 @@
+.container{
+    background-color: #73459e;
+    text-align: center;
+    color: white;
+    padding: 11px;
+}
+
+.courseContainer{
+    display: flex;
+    justify-content: center;
+}

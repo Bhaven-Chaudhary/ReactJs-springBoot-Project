@@ -1,0 +1,4 @@
+Full Stack project created using React Js and Spring boot.
+
+Rest api using spring boot and react playlist project.
+https://www.youtube.com/watch?v=V2p5rVIBT5M&list=PL0zysOflRCekYnhLjQGwpdJYzr38QXdhl&index=2
